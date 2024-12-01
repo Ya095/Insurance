@@ -1,4 +1,4 @@
-from pydantic import BaseModel, field_validator, Field
+from pydantic import BaseModel, field_validator, Field, ValidationError
 from datetime import date
 from decimal import Decimal
 
@@ -15,8 +15,8 @@ class InsuranceRequest(BaseModel):
             if transfer_date < date.today():
                 raise ValueError("Transfer date cannot be in the past.")
             return v
-        except ValueError:
-            raise ValueError("Invalid date format! Example: '2020-06-01'.")
+        except ValidationError:
+            raise ValidationError("Invalid date format! Example: '2020-06-01'.")
 
 
 class ResponsePrice(BaseModel):

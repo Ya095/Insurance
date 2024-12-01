@@ -3,7 +3,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from insurance_app.core.config import settings
 from insurance_app.core.models import db_helper
 from .utils.json_validation import validate_json
-from .crud.write_json_to_db import write_json_data_to_db
+from .crud.json_data_to_tariff_table import write_json_data_to_db
+
 
 router = APIRouter(
     prefix=settings.api.v1.upload_data,
